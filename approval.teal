@@ -1,0 +1,32 @@
+#pragma version 6
+txn ApplicationID
+int 0
+==
+bnz main_l6
+txna ApplicationArgs 0
+byte "update"
+==
+bnz main_l5
+txna ApplicationArgs 0
+byte "read"
+==
+bnz main_l4
+err
+main_l4:
+int 1
+return
+main_l5:
+byte "reputation"
+byte "reputation"
+app_global_get
+int 1
++
+app_global_put
+int 1
+return
+main_l6:
+byte "reputation"
+int 0
+app_global_put
+int 1
+return
